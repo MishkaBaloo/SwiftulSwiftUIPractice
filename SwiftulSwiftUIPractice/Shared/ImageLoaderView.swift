@@ -11,6 +11,7 @@ import SDWebImageSwiftUI
 struct ImageLoaderView: View {
     
     var urlString: String =  Constans.randomImage
+//    var urlString: String = ProfilePicture.myProfileImage
     var resizingMode: ContentMode = .fill
     
     var body: some View {

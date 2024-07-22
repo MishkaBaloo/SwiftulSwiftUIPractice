@@ -19,6 +19,7 @@ struct ContentView: View {
             VStack {
                 ForEach(users) { user in
                     Text(user.firstName)
+                        .foregroundStyle(.spotifyGreen)
                 }
             }
         }
