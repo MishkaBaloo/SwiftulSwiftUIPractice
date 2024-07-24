@@ -1,25 +1,27 @@
 //
-//  ContentView.swift
+//  ProductsTest.swift
 //  SwiftulSwiftUIPractice
 //
-//  Created by Michael on 7/18/24.
+//  Created by Michael on 7/24/24.
 //
 
 import SwiftUI
-import SwiftfulUI
-import SwiftfulRouting
 
-struct ContentView: View {
 
+struct ProductsTest: View {
+    
     @State private var users: [User] = []
     @State private var products: [Product] = []
     
     var body: some View {
         ScrollView {
             VStack {
-                ForEach(users) { user in
-                    Text(user.firstName)
-                        .foregroundStyle(.spotifyGreen)
+//                ForEach(users) { user in
+//                    Text(user.email)
+//                }
+                
+                ForEach(products) { product in
+                    Text(product.title)
                 }
             }
         }
@@ -28,7 +30,6 @@ struct ContentView: View {
             await getData()
         }
     }
-    
     private func getData() async {
         do {
             users = try await DatabaseHelper().getUsers()
@@ -37,8 +38,8 @@ struct ContentView: View {
             
         }
     }
+    
 }
-
-#Preview {
-    ContentView()
-}
+    #Preview {
+        ProductsTest()
+    }

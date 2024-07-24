@@ -7,10 +7,9 @@
 
 import Foundation
 
-struct DataBaseHelper {
+struct DatabaseHelper {
     
     func getProducts() async throws -> [Product] {
-        
         guard let url = URL(string: "https://dummyjson.com/products") else {
             throw URLError(.badURL)
         }
@@ -21,7 +20,6 @@ struct DataBaseHelper {
     }
     
     func getUsers() async throws -> [User] {
-        
         guard let url = URL(string: "https://dummyjson.com/users") else {
             throw URLError(.badURL)
         }
@@ -30,4 +28,5 @@ struct DataBaseHelper {
         let users = try JSONDecoder().decode(UserArray.self, from: data)
         return users.users
     }
+    
 }

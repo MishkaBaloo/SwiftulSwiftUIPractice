@@ -5,7 +5,6 @@
 //  Created by Michael on 7/21/24.
 //
 
-import Foundation
 
 struct ProductArray: Codable {
     let products: [Product]
@@ -14,12 +13,19 @@ struct ProductArray: Codable {
 
 struct Product: Codable, Identifiable {
     let id: Int
-    let title: String
-    let description: String
-    let price: Int
-    let discountPercentage, rating: Double
+    let title, description: String
+    let price, discountPercentage, rating: Double
     let stock: Int
-    let brand, category: String
-    let thumbnail: String
+    let tags: [String]
+    let brand: String?
+    let sku: String
+    let weight: Int
+    let warrantyInformation, shippingInformation: String
+    let minimumOrderQuantity: Int
     let images: [String]
+    let thumbnail: String
+
+    var firstImage: String {
+        images.first ?? Constants.randomImage
+    }
 }
