@@ -5,6 +5,7 @@
 //  Created by Michael on 7/21/24.
 //
 
+import Foundation
 
 struct ProductArray: Codable {
     let products: [Product]
@@ -17,15 +18,24 @@ struct Product: Codable, Identifiable {
     let price, discountPercentage, rating: Double
     let stock: Int
     let tags: [String]
-    let brand: String?
+    let brand: String? // only non optional can load
+//    let brand: String
     let sku: String
     let weight: Int
     let warrantyInformation, shippingInformation: String
     let minimumOrderQuantity: Int
     let images: [String]
     let thumbnail: String
-
+    
+    
+    
     var firstImage: String {
         images.first ?? Constants.randomImage
     }
+}
+
+struct ProductRow: Identifiable {
+    let id = UUID().uuidString
+    let title: String
+    let products: [Product]
 }
