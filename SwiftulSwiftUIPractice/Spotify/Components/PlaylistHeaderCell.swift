@@ -14,7 +14,7 @@ struct PlaylistHeaderCell: View {
     var title: String = "Some playlist title goes here"
     var subtitle: String = "Subtitle goes here"
     var imageName: String = Constants.randomImage
-    var mishkaImage: String  = ProfilePicture.myProfileImage
+    var mishkaImage: String  = MishkaPicture.mishka
     var shadowColor: Color = .spotifyBlack.opacity(0.8)
     
     var body: some View {
