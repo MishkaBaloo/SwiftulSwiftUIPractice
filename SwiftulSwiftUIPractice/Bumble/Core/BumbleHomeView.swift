@@ -6,21 +6,27 @@
 //
 
 import SwiftUI
+import SwiftfulRouting
 
 struct BumbleHomeView: View {
+    
+    @Environment(\.router) var router
     
     @State private var filters: [String] = ["Everyone", "Trending"]
     @AppStorage("bumble_home_filter") private var selectedFilter = "Everyone"
     
     var body: some View {
         ZStack {
-            Color.bumbleWhite
+            Color.bumbleWhite.ignoresSafeArea()
             
             VStack(spacing: 15) {
                 header
                 
                 BumbleFilterView(options: filters, selection: $selectedFilter)
                     .background(Divider(), alignment: .bottom)
+                
+                BumbleCardView()
+                
                 Spacer()
             }
             .padding(8)
@@ -41,7 +47,7 @@ struct BumbleHomeView: View {
                     .padding(8)
                     .background(Color.black.opacity(0.001))
                     .onTapGesture {
-                        
+                        router.dismissScreen()
                     }
             }
             .frame(maxWidth: .infinity, alignment: .leading)

@@ -74,7 +74,7 @@ struct SpotifyHomeView: View {
         HStack {
             ZStack {
 //                if let currentUser {
-                    ImageLoaderView(urlString: ProfilePicture.myProfileImage)
+                    ImageLoaderView(urlString: MishkaPicture.mishka)
 //                    ImageLoaderView(urlString: currentUser.image)
                         .background(.spotifyWhite)
                         .clipShape(Circle())
