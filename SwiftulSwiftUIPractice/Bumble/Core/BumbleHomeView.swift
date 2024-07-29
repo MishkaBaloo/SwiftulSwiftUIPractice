@@ -111,11 +111,13 @@ struct BumbleHomeView: View {
                 .frame(maxWidth: .infinity, alignment: .center)
 
             
-            Image(systemName: "slider.horizontal.3")
+            Image(systemName: "ellipsis.message")
                 .padding(8)
                 .background(Color.black.opacity(0.001))
                 .onTapGesture {
-                    
+                    router.showScreen(.push) { _ in
+                        BumbleChatsView()
+                    }
                 }
                 .frame(maxWidth: .infinity, alignment: .trailing)
         }
@@ -189,5 +191,7 @@ struct BumbleHomeView: View {
 }
 
 #Preview {
-    BumbleHomeView()
+    RouterView { _ in
+        BumbleHomeView()
+    }
 }

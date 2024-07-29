@@ -1,5 +1,5 @@
 //
-//  BunbleChatPreviewCell.swift
+//  BumbleChatPreviewCell.swift
 //  SwiftulSwiftUIPractice
 //
 //  Created by Michael on 7/29/24.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct BunbleChatPreviewCell: View {
+struct BumbleChatPreviewCell: View {
     
     var imageName: String = Constants.randomImage
     var percentageRemaining: Double = Double.random(in: 0...1)
@@ -55,6 +55,6 @@ struct BunbleChatPreviewCell: View {
 }
 
 #Preview {
-    BunbleChatPreviewCell()
+    BumbleChatPreviewCell()
         .padding()
 }
