@@ -144,7 +144,6 @@ struct BumbleHomeView: View {
             minimumDistance: 10,
             resets: true,
             rotationMultiplier: 1.05,
-            //                                        scaleMultiplier: 0.5,
             onChanged: { dragOffset in
                 currentSwipeOffset = dragOffset.width
             },
