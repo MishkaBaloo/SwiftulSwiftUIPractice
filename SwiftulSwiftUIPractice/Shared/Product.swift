@@ -20,6 +20,7 @@ struct Product: Codable, Identifiable {
     let tags: [String]
     let brand: String? // only non optional can load
 //    let brand: String
+    let category: String
     let sku: String
     let weight: Int
     let warrantyInformation, shippingInformation: String
@@ -44,6 +45,7 @@ struct Product: Codable, Identifiable {
             stock: 50,
             tags: ["Cosmetic", "Lips", "Apple"],
             brand: "Dior",
+            category: "Electronic Devices",
             sku: "sku",
             weight: 2,
             warrantyInformation: "Good",
