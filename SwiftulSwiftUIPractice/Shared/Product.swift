@@ -28,7 +28,9 @@ struct Product: Codable, Identifiable {
     let images: [String]
     let thumbnail: String
     
-    
+    var _brand: String {
+        brand ?? ""
+    }
     
     var firstImage: String {
         images.first ?? Constants.randomImage
