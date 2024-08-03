@@ -7,8 +7,11 @@
 
 import SwiftUI
 import SwiftfulUI
+import SwiftfulRouting
 
 struct NetflixHomeView: View {
+    
+    @Environment(\.router) var router
     
     @State private var filter = FilterModel.mockArray
     @State private var selectedFilter: FilterModel? = nil
@@ -109,12 +112,20 @@ struct NetflixHomeView: View {
         }
     }
     
+    private func onProductPressed(product: Product) {
+        router.showScreen(.sheet) { _ in
+            NetflixMovieDetailView(product: product)
+        }
+    }
+    
     private var header: some View {
-        
         HStack(spacing: 0) {
             Text("For You")
                 .frame(maxWidth: .infinity, alignment: .leading)
                 .font(.title)
+                .onTapGesture {
+                    router.dismissScreen()
+                }
             
             HStack(spacing: 16, content: {
                 Image(systemName: "tv.badge.wifi")
@@ -139,10 +150,10 @@ struct NetflixHomeView: View {
             title: product.title,
             categories: [product.category.capitalized, product._brand],
             onBackgroundPressed: {
-                
+                onProductPressed(product: product)
             },
             onPlayPressed: {
-                
+                onProductPressed(product: product)
             },
             onMylistPressed: {
                 
@@ -186,13 +197,16 @@ struct NetflixHomeView: View {
                     
                     ScrollView(.horizontal) {
                         LazyHStack {
-                            ForEach(Array(row.products.enumerated()), id: \.offset) { (index, producrt) in
+                            ForEach(Array(row.products.enumerated()), id: \.offset) { (index, product) in
                                 NetflixMovieCell(
-                                    imageName: producrt.firstImage,
-                                    title: producrt.title,
-                                    isRecentlyAdded: producrt.recentlyAdded,
+                                    imageName: product.firstImage,
+                                    title: product.title,
+                                    isRecentlyAdded: product.recentlyAdded,
                                     topTenRanking: rowIndex == 1 ?  (index + 1) : nil
                                 )
+                                .onTapGesture {
+                                    onProductPressed(product: product)
+                                }
                             }
                         }
                         .padding(.horizontal, 16)
@@ -205,5 +219,7 @@ struct NetflixHomeView: View {
 }
 
 #Preview {
-    NetflixHomeView()
+    RouterView { _ in
+        NetflixHomeView()
+    }
 }
